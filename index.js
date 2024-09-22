@@ -11,13 +11,13 @@ async function getWeather() {
     const data = await response.json();
   
     if (response.ok) {
-        document.getElementById('weather').innerText = `Weather: ${data.weather}`;
-        document.getElementById('temperature').innerText = `Temperature: ${data.temperature} Celsius`;
+        document.getElementById('weather').innerText = `Weather: ${data.weather[0].description}`;
+        document.getElementById('temperature').innerText = `Temperature: ${data.main.temp} Celsius`;
     } else {
-        document.getElementById('weather').innerText = `Error: ${data.error}`;
+        document.getElementById('weather').innerText = `Error: ${data.message}`;
     }
 } catch (error) {
-    console.error('Error fwtching the weather data:', error);
+    console.error('Error fetching the weather data:', error);
     document.getElementById('weather').innerText =  'Error: Could not retrieve data';
 }
 }
